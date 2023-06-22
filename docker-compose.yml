@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  mqtt:
+    image: gesubimage
+    environment:
+      - MQTT_HOST=mqtt://10.246.0.10:1883
+      - MQTT_PORT=8883
+      - MQTT_CLIENTID=f44a7c6a-219f-417d-9a1d-f2bafd38ad53
+      - MQTT_USERNAME=gepc-subs
+      - MQTT_PASSWORD=14d1b530
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    restart: always
