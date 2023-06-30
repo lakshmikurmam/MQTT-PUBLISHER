@@ -6,31 +6,36 @@ const mqttBrokerUrl = 'mqtt://test.mosquitto.org:1883';
 // Create an MQTT client
 const mqttClient = mqtt.connect(mqttBrokerUrl);
 //added when it pushed docker
-const data1 = require('/hello/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
-const data2 = require('/hello/MQTT-PUBLISHER/alaram/TS.json')
-fs.readFile(data1, 'utf8', (err, data1) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-});
-console.log(data1)
 
-fs.readFile(data2, 'utf8', (err, data2) => {
+
+const filePath1 = '/hellos/MQTT-PUBLISHER/alaram/agentsTSsub1.json';
+const filePath2 = '/hellos/MQTT-PUBLISHER/alaram/TS.jsonpath/to/file2.txt';
+
+fs.readFile(filePath1, 'utf8', (err, data1) => {
     if (err) {
         console.error(err);
         return;
     }
+
+    console.log('Contents of file 1:', data1);
+
+    fs.readFile(filePath2, 'utf8', (err, data2) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        console.log('Contents of file 2:', data2);
+    });
 });
-console.log(data2)
-    //For Docker Conatner
-    // Define topic-file mappings
+//For Docker Conatner
+// Define topic-file mappings
 const topicFileMappings = [
     //Local Testing
     //{ topic: 'MC/V1/testing', file: './alaram/agentsTSsub1.json' },
     // { topic: 'testing_new', file: './alaram/TS.json' },
-    { topic: 'MC/V1/testing', file: 'data1' },
-    { topic: 'testing_new', file: 'data2' },
+    { topic: 'MC/V1/testing', file: 'filePath1' },
+    { topic: 'testing_new', file: 'filePath2' },
 
 ];
 
