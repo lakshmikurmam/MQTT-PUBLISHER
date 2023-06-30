@@ -6,15 +6,23 @@ const mqttBrokerUrl = 'mqtt://test.mosquitto.org:1883';
 // Create an MQTT client
 const mqttClient = mqtt.connect(mqttBrokerUrl);
 //added when it pushed docker
-const data1 = require('/app11/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
-const data2 = require('/app11/MQTT-PUBLISHER/alaram/TS.json')
-fs.readFile(data1, data2, 'utf8', (err, data) => {
+const data1 = require('/app/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
+const data2 = require('/app/MQTT-PUBLISHER/alaram/TS.json')
+fs.readFile(data1, 'utf8', (err, data1) => {
     if (err) {
         console.error(err);
         return;
     }
 });
-console.log(data)
+console.log(data1)
+
+fs.readFile(data2, 'utf8', (err, data2) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+});
+console.log(data2)
     //For Docker Conatner
     // Define topic-file mappings
 const topicFileMappings = [
