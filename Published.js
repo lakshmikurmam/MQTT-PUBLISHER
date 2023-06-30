@@ -8,8 +8,11 @@ const mqttClient = mqtt.connect(mqttBrokerUrl);
 
 // Define topic-file mappings
 const topicFileMappings = [
-    { topic: 'MC/V1/testing', file: './alaram/agentsTSsub1.json' },
-    { topic: 'testing_new', file: './alaram/TS.json' },
+    //Local Testing
+    //{ topic: 'MC/V1/testing', file: './alaram/agentsTSsub1.json' },
+    // { topic: 'testing_new', file: './alaram/TS.json' },
+    { topic: 'MC/V1/testing', file: '../mqtt-publisher/alaram/agentsTSsub1.json' },
+    { topic: 'testing_new', file: '../mqtt-publisher/alaram/TS.json' },
 
 ];
 
