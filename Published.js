@@ -12,20 +12,21 @@ const topicFileMappings = [
 ];
 
 const client = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
+setInterval(() => {
+    client.on('connect', () => {
+        topicFileMappings.forEach(mapping => {
+            const { topic, file } = mapping;
+            fs.readFile(file, 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
 
-client.on('connect', () => {
-    topicFileMappings.forEach(mapping => {
-        const { topic, file } = mapping;
-        fs.readFile(file, 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
+                // Publish the file contents to the corresponding topic
+                client.publish(topic, data);
 
-            // Publish the file contents to the corresponding topic
-            client.publish(topic, data);
-
-            console.log(`Published file contents to topic ${topic}`);
+                console.log(`Published file contents to topic ${topic}`);
+            });
         });
     });
-});
+}, 6000);
