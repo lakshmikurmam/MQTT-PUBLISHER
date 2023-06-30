@@ -5,14 +5,16 @@ const mqttBrokerUrl = 'mqtt://test.mosquitto.org:1883';
 
 // Create an MQTT client
 const mqttClient = mqtt.connect(mqttBrokerUrl);
-
-// Define topic-file mappings
+//added when it pushed docker
+const data1 = require('/app/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
+const data2 = require('/app/MQTT-PUBLISHER/alaram/TS.json')
+    // Define topic-file mappings
 const topicFileMappings = [
     //Local Testing
     //{ topic: 'MC/V1/testing', file: './alaram/agentsTSsub1.json' },
     // { topic: 'testing_new', file: './alaram/TS.json' },
-    { topic: 'MC/V1/testing', file: 'agentsTSsub1.json' },
-    { topic: 'testing_new', file: 'alaram/TS.json' },
+    { topic: 'MC/V1/testing', file: 'data1' },
+    { topic: 'testing_new', file: 'data2' },
 
 ];
 
