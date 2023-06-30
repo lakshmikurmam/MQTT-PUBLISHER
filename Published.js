@@ -6,8 +6,8 @@ const mqttBrokerUrl = 'mqtt://test.mosquitto.org:1883';
 // Create an MQTT client
 const mqttClient = mqtt.connect(mqttBrokerUrl);
 //added when it pushed docker
-const data1 = require('/app/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
-const data2 = require('/app/MQTT-PUBLISHER/alaram/TS.json')
+const data1 = require('/hello/MQTT-PUBLISHER/alaram/agentsTSsub1.json')
+const data2 = require('/hello/MQTT-PUBLISHER/alaram/TS.json')
 fs.readFile(data1, 'utf8', (err, data1) => {
     if (err) {
         console.error(err);
