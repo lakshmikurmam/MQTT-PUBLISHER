@@ -1,6 +1,13 @@
 const fs = require('fs');
 const mqtt = require('mqtt');
 const path = require('path');
+const username = 'gepc-producer';
+const password = '26afc6e1';
+const clientId = '95cb7981-3d4c-4b35-aff0-73d5150be1be';
+const host = '10.246.0.10:1883';
+let messageCount = 0;
+//const topic = 'MC/V1/testing';
+const MQTT_QOS = 1;
 // Relative file paths within the container
 const relativeFilePath1 = './alaram/agentsTSsub1.json';
 const relativeFilePath2 = './alaram/TS.json';
@@ -12,6 +19,12 @@ const topicFileMappings = [
 ];
 
 const client = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
+const client1 = mqtt.connect(`mqtt://${username}:${password}@${host}`, {
+    clientId,
+    clean: true,
+    rejectUnauthorized: false
+});
+
 setInterval(() => {
     client.on('connect', () => {
         topicFileMappings.forEach(mapping => {
