@@ -15,11 +15,12 @@ const absoluteFilePath1 = path.join(__dirname, relativeFilePath1);
 const absoluteFilePath2 = path.join(__dirname, relativeFilePath2);
 const topicFileMappings = [
     { topic: 'MC/V1/testing', file: absoluteFilePath1 },
-    { topic: 'testing_new', file: absoluteFilePath2 },
+    // { topic: 'testing_new', file: absoluteFilePath2 },
+    { topic: 'MC/V1/testing', file: absoluteFilePath2 },
 ];
-
-const client = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
-const client1 = mqtt.connect(`mqtt://${username}:${password}@${host}`, {
+//Local Test
+//const client = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
+const client = mqtt.connect(`mqtt://${username}:${password}@${host}`, {
     clientId,
     clean: true,
     rejectUnauthorized: false
