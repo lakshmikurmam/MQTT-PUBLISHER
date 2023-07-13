@@ -19,8 +19,8 @@ const topicFileMappings = [
     // { topic: 'MC/V1/testing', file: absoluteFilePath2 },
 ];
 //Local Test
-const client1 = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
-const client = mqtt.connect(`mqtt://${username}:${password}@${host}`, {
+const client = mqtt.connect('mqtt://test.mosquitto.org:1883'); // Replace with your MQTT broker URL
+const client1 = mqtt.connect(`mqtt://${username}:${password}@${host}`, {
     clientId,
     clean: true,
     rejectUnauthorized: false
@@ -37,7 +37,7 @@ client.on('connect', () => {
             }
 
             // Publish the file contents to the corresponding topic
-            client.publish(topic, data);
+            client.publish(topic, data,{retain:true});
 
             console.log(`Published file contents to topic ${topic}`);
             client.end(); // Disconnect from the MQTT broker after publishing
